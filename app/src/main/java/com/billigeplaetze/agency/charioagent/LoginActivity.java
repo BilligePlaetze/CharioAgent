@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,7 +33,5 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivity(new Intent(LoginActivity.this, QueueActivity.class));
     }
-
-
 
 }
