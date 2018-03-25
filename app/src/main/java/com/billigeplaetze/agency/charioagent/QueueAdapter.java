@@ -59,6 +59,7 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> 
                 bundle.putString("description",dataSet.get(position).getTaskDescription());
                 bundle.putString("Type", dataSet.get(position).getType());
                 bundle.putDouble("amount", dataSet.get(position).getDonationAmount());
+                bundle.putString("transactionId", dataSet.get(position).getTransactionId().donationCode);
                 Intent intent = new Intent(context, TodoActivity.class);
                 intent.putExtra("extra", bundle);
                 context.startActivity(intent);

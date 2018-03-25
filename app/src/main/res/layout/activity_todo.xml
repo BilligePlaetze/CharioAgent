@@ -59,6 +59,20 @@
 
         app:layout_constraintTop_toBottomOf="@id/stats" />
 
+    <TextView
+        android:id="@+id/moneytaken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:paddingHorizontal="26dp"
+        android:text=""
+        />
+
     <CheckBox
         android:id="@+id/orderCheckbox"
         android:layout_width="wrap_content"
@@ -69,8 +83,26 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:maxLength="25"
+        android:ellipsize="end"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <CheckBox
+        android:id="@+id/orderCheckbox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginStart="32dp"
+        android:text="Pass on the goat to Agent B"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/orderCheckbox" />
+
+
 
     <Button
         android:id="@+id/accept_order"
@@ -79,11 +111,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_style"
-        android:text="accept order"
+        android:text="order fulfilled"
         android:textColor="#707070"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orderCheckbox" />
+        app:layout_constraintTop_toBottomOf="@id/orderCheckbox2" />
 
 </android.support.constraint.ConstraintLayout>
