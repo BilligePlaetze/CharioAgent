@@ -46,7 +46,7 @@ public class QueueActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         queue.setLayoutManager(layoutManager);
         transactions = new ArrayList<Transaction>();
-        adapter = new QueueAdapter(transactions);
+        adapter = new QueueAdapter(transactions, this);
         queue.setAdapter(adapter);
 
         doNetworking();
