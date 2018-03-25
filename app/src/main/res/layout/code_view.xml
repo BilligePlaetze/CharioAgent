@@ -4,23 +4,53 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:textSize="26sp"
-        android:padding="16dp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        >
-    </TextView>
-
-    <View
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"/>
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="26sp"
+            android:paddingLeft="56dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:text="Code"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left"
+            />
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="0dp"
+            android:layout_weight="1.4"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="26sp"
+            android:paddingLeft="56dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:paddingRight="56dp"
+            android:textAlignment="viewEnd"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_marginRight="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#9cacacac"
+            />
+    </FrameLayout>
+
 
 </LinearLayout>

@@ -50,7 +50,7 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(QueueAdapter.ViewHolder holder, final int position) {
-        holder.getTextView().setText("Code: " + dataSet.get(position).getTransactionId().donationCode);
+        holder.getTextView().setText(dataSet.get(position).getTransactionId().donationCode);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
