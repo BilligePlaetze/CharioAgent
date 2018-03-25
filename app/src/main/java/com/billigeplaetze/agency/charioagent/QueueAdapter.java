@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> {
-    private String[] dataSet;
+    private List<Transaction> dataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
@@ -16,7 +18,7 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> 
         }
     }
 
-    public QueueAdapter(String[] dataSet) {
+    public QueueAdapter(List<Transaction> dataSet) {
         this.dataSet = dataSet;
     }
 
@@ -30,11 +32,12 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(QueueAdapter.ViewHolder holder, int position) {
-        holder.textView.setText(dataSet[position]);
+        holder.textView.setText(dataSet.get(position).getTransactionId().donationCode);
+        System.out.println("set gerufen");
     }
 
     @Override
     public int getItemCount() {
-        return dataSet.length;
+        return dataSet == null ? 0 : dataSet.size();
     }
 }

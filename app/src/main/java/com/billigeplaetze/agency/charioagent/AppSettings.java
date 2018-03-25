@@ -1,10 +1,13 @@
 package com.billigeplaetze.agency.charioagent;
 
+import java.net.URL;
+
 /**
  */
 
 public class AppSettings {
-    public static String agentName;
+    private static String agentName;
+    public static String getTransactions = "http://192.168.170.144:8080/transaction/search/findByTransactionIdAgentIdAndState";
 
     public static String getAgentName() {
         return agentName;
