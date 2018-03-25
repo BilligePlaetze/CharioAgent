@@ -99,8 +99,7 @@ public class TodoActivity extends AppCompatActivity {
 
     @OnClick(R.id.accept_order)
     public void onAcceptOrderClicked(){
-
-
+        new UpdateAgentsAsync().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
@@ -113,6 +112,27 @@ public class TodoActivity extends AppCompatActivity {
         }
     }
 
+    private class UpdateAgentsAsync extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                String address = AppSettings.updateAdress + "?" + "state=NEW";
+                URL url = new URL(address);
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+
+                System.out.println(String.valueOf(conn.getResponseCode()));
+
+                conn.disconnect();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
     private class UploadImageAsync extends AsyncTask<Bitmap, Void, Void> {
 
         @Override
@@ -136,25 +156,6 @@ public class TodoActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 String json = gson.toJson(transaction);
                 URL url = new URL(AppSettings.dickPickAddress);
-
-                /**
-                URL url = new URL(AppSettings.dickPickAddress);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("POST");
-                connection.setDoOutput(true);
-                connection.setRequestProperty("Content-Type","application/json");
-                connection.connect();
-                DataOutputStream printout = new DataOutputStream(connection.getOutputStream ());
-                printout.writeBytes(URLEncoder.encode(json,"UTF-8"));
-                printout.flush ();
-                printout.close ();
-                // Create the data
-                if (connection.getResponseCode() < 300) {
-                    System.out.println("Dick Pick sehr gross");
-                } else {
-                    System.out.println("Oh schade no dickpick");
-                }
-                 **/
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

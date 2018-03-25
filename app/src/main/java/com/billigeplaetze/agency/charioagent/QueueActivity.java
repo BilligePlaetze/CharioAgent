@@ -2,6 +2,7 @@ package com.billigeplaetze.agency.charioagent;
 
 import android.os.AsyncTask;
 import android.os.Debug;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,9 @@ import kacke.Kackclass;
 public class QueueActivity extends AppCompatActivity {
     @BindView(R.id.queue_view)
     RecyclerView queue;
+    @BindView(R.id.swiperefresh)
+    SwipeRefreshLayout swipeLayout;
+
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private List<Transaction> transactions;
@@ -41,6 +45,15 @@ public class QueueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_queue);
         ButterKnife.bind(this);
 
+        swipeLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        transactions.clear();
+                        doNetworking();
+                    }
+                }
+        );
         queue.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -51,6 +64,7 @@ public class QueueActivity extends AppCompatActivity {
 
         doNetworking();
     }
+
 
     private void doNetworking() {
         final QueueActivity activity = this;
@@ -101,6 +115,9 @@ public class QueueActivity extends AppCompatActivity {
                         public void run() {
                             adapter.notifyDataSetChanged();
                             System.out.println(adapter.getItemCount());
+                            if(swipeLayout.isRefreshing()) {
+                                swipeLayout.setRefreshing(false);
+                            }
                         }
                     });
                 } catch (Exception e) {
@@ -111,4 +128,5 @@ public class QueueActivity extends AppCompatActivity {
         });
 
     }
+
 }
